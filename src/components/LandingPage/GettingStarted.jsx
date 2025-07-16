@@ -1,7 +1,15 @@
 import React from 'react';
 import { FaUserPlus, FaBookOpen, FaCalendarCheck, FaRocket } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const GettingStarted = () => {
+  
+  const navigate = useNavigate();
+
+  const handleLoginRedirect = () => {
+    navigate('/login');
+  }
+  
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -87,7 +95,7 @@ const GettingStarted = () => {
               Join thousands of students who are studying smarter with StudyMate
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition duration-300 cursor-pointer shadow-md hover:shadow-lg">
+              <button className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition duration-300 cursor-pointer shadow-md hover:shadow-lg" onClick={handleLoginRedirect}>
                 Get Started - It's Free
               </button>
              

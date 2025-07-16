@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import {useNavigate} from 'react-router-dom';
 
 const HeroSection = ({ onScrollClick }) => {
   const controls = useAnimation();
@@ -61,6 +62,12 @@ const HeroSection = ({ onScrollClick }) => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleLoginRedirect = () => {
+    navigate('login');
+  }
+
   return (
     <section 
       ref={ref}
@@ -117,6 +124,7 @@ const HeroSection = ({ onScrollClick }) => {
                   boxShadow: "0 10px 25px -5px rgba(13, 148, 136, 0.3)"
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={handleLoginRedirect}
               >
                 Get Started - It's Free
               </motion.button>
