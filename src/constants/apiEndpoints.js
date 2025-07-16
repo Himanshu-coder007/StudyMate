@@ -3,5 +3,4 @@ export const API_ENDPOINTS = {
   REGISTER: "/register",
   LOGIN: "/login",
   LOGOUT: "/logout",
-  CHECK_AUTH: "/check-auth", // Add this
 };

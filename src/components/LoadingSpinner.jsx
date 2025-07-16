@@ -1,12 +1,9 @@
-const LoadingSpinner = ({ size = 'medium' }) => {
-  const sizes = {
-    small: 'h-5 w-5',
-    medium: 'h-8 w-8',
-    large: 'h-12 w-12'
-  };
-
+// src/components/LoadingSpinner.jsx
+const LoadingSpinner = () => {
   return (
-    <div className={`animate-spin rounded-full border-b-2 border-gray-900 ${sizes[size]}`}></div>
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+    </div>
   );
 };
 
