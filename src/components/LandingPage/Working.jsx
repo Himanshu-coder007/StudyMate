@@ -27,16 +27,19 @@ const StepCard = ({ step, title, description, icon, index }) => {
       variants={variants}
     >
       <div className="relative">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center text-indigo-600 text-3xl mb-6 shadow-sm border border-indigo-50">
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-50 to-white flex items-center justify-center text-gray-900 text-3xl mb-6 shadow-lg border border-gray-100">
           {icon}
+        </div>
+        <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-500 to-pink-500 w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md">
+          {step}
         </div>
       </div>
       <div className="text-center max-w-xs px-2">
-        <span className="inline-block bg-indigo-50 text-indigo-600 text-xs font-medium tracking-wider uppercase px-3 py-1 rounded-full mb-3">
+        <span className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-gray-800 text-xs font-medium tracking-wider uppercase px-3 py-1 rounded-full mb-3">
           Step {step}
         </span>
         <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+        <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
       </div>
     </motion.div>
   );
@@ -45,11 +48,11 @@ const StepCard = ({ step, title, description, icon, index }) => {
 const DailyFlowCard = ({ time, title, items, color }) => {
   return (
     <motion.div 
-      className={`bg-gradient-to-br ${color} p-6 rounded-xl shadow-sm border border-gray-100`}
+      className={`bg-gradient-to-br ${color} p-6 rounded-xl shadow-lg border border-white border-opacity-20`}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
       <div className="flex items-center mb-4">
-        <div className="w-10 h-10 rounded-full bg-white bg-opacity-30 flex items-center justify-center text-white mr-3">
+        <div className="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-white mr-3 backdrop-blur-sm">
           {time === 'Morning' ? '🌅' : time === 'Study Time' ? '📚' : '🌙'}
         </div>
         <h4 className="text-lg font-semibold text-white">{title}</h4>
@@ -57,7 +60,7 @@ const DailyFlowCard = ({ time, title, items, color }) => {
       <ul className="space-y-2.5">
         {items.map((item, i) => (
           <li key={i} className="flex items-start">
-            <span className="text-white text-opacity-80 mr-2 mt-0.5">•</span>
+            <span className="text-white text-opacity-90 mr-2 mt-0.5">•</span>
             <span className="text-white text-opacity-90 text-sm">{item}</span>
           </li>
         ))}
@@ -108,7 +111,7 @@ const Working = () => {
       step: 7,
       title: "Exam Prep",
       description: "Crash course mode for final review",
-      icon: <TfiRocket  className="stroke-current" />
+      icon: <TfiRocket className="stroke-current" />
     }
   ];
 
@@ -121,7 +124,7 @@ const Working = () => {
         "Start Pomodoro timer",
         "Begin first topic"
       ],
-      color: "from-blue-500 to-blue-600"
+      color: "from-teal-500 to-cyan-600"
     },
     {
       time: "Study Time",
@@ -131,7 +134,7 @@ const Working = () => {
         "Complete flashcards",
         "Mark tasks done"
       ],
-      color: "from-indigo-500 to-indigo-600"
+      color: "from-violet-500 to-purple-600"
     },
     {
       time: "Evening",
@@ -141,12 +144,12 @@ const Working = () => {
         "Adjust schedule",
         "Plan next day"
       ],
-      color: "from-violet-500 to-violet-600"
+      color: "from-fuchsia-500 to-pink-600"
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="text-center mb-20"
@@ -154,8 +157,7 @@ const Working = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          
-          <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+          <h2 className="text-4xl font-bold  sm:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
             Smart Study Journey
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
@@ -184,22 +186,25 @@ const Working = () => {
           {steps.map((step) => (
             <motion.div 
               key={step.step} 
-              className="flex items-start gap-5 bg-white p-5 rounded-xl shadow-sm border border-gray-100"
+              className="flex items-start gap-5 bg-white p-5 rounded-xl shadow-lg border border-gray-100"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: step.step * 0.1 }}
             >
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 text-xl">
+              <div className="flex-shrink-0 relative">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-50 to-white flex items-center justify-center text-gray-900 text-xl shadow-sm border border-gray-100">
                   {step.icon}
+                </div>
+                <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-500 to-pink-500 w-5 h-5 rounded-full flex items-center justify-center text-white text-[10px] font-bold shadow-sm">
+                  {step.step}
                 </div>
               </div>
               <div>
-                <span className="inline-block bg-indigo-50 text-indigo-600 text-xs font-medium uppercase px-2 py-1 rounded-full mb-2">
+                <span className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-gray-800 text-xs font-medium uppercase px-2 py-1 rounded-full mb-2">
                   Step {step.step}
                 </span>
                 <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
-                <p className="text-gray-500 text-sm mt-1">{step.description}</p>
+                <p className="text-gray-600 text-sm mt-1">{step.description}</p>
               </div>
             </motion.div>
           ))}

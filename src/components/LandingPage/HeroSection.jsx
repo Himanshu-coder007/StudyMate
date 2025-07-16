@@ -64,7 +64,7 @@ const HeroSection = ({ onScrollClick }) => {
   return (
     <section 
       ref={ref}
-      className="bg-gradient-to-br from-blue-50 to-indigo-100 py-12 md:py-20 overflow-hidden"
+      className="bg-gradient-to-br from-slate-50 to-cyan-50 py-12 md:py-20 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* App Name Header */}
@@ -75,10 +75,10 @@ const HeroSection = ({ onScrollClick }) => {
           transition={{ duration: 0.5 }}
         >
           <div className="flex items-center">
-            <svg className="w-8 h-8 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-8 h-8 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
-            <h2 className="text-2xl font-bold text-indigo-600">StudyMate</h2>
+            <h2 className="text-2xl font-bold text-teal-600">StudyMate</h2>
           </div>
         </motion.div>
 
@@ -94,14 +94,14 @@ const HeroSection = ({ onScrollClick }) => {
             variants={itemVariants}
           >
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 leading-tight"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Organize Your <span className="text-indigo-600">Study</span> Like Never Before
+              Organize Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-600">Study</span> Like Never Before
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-gray-600"
+              className="text-lg md:text-xl text-slate-600"
               variants={itemVariants}
             >
               The ultimate study planner that helps you create perfect schedules, track progress, and achieve academic success.
@@ -111,15 +111,21 @@ const HeroSection = ({ onScrollClick }) => {
               variants={itemVariants}
             >
               <motion.button 
-                className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg shadow-md transition duration-300 cursor-pointer"
-                whileHover={{ scale: 1.05 }}
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(13, 148, 136, 0.3)"
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 Get Started - It's Free
               </motion.button>
               <motion.button 
-                className="border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 cursor-pointer"
-                whileHover={{ scale: 1.05 }}
+                className="border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 font-medium py-3 px-6 rounded-lg shadow-sm transition-all duration-300 cursor-pointer"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "rgba(236, 254, 255, 1)"
+                }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onScrollClick}
               >
@@ -143,7 +149,7 @@ const HeroSection = ({ onScrollClick }) => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               />
               <motion.div 
-                className="absolute -bottom-6 -left-6 w-24 h-24 bg-indigo-100 rounded-full -z-10"
+                className="absolute -bottom-6 -left-6 w-24 h-24 bg-cyan-100 rounded-full -z-10 opacity-80"
                 animate={{
                   scale: [1, 1.1, 1],
                   rotate: [0, 5, 0]
@@ -155,7 +161,7 @@ const HeroSection = ({ onScrollClick }) => {
                 }}
               />
               <motion.div 
-                className="absolute -top-6 -right-6 w-20 h-20 bg-yellow-100 rounded-full -z-10"
+                className="absolute -top-6 -right-6 w-20 h-20 bg-teal-100 rounded-full -z-10 opacity-80"
                 animate={{
                   y: [0, -10, 0],
                   x: [0, 5, 0]
@@ -167,7 +173,7 @@ const HeroSection = ({ onScrollClick }) => {
                 }}
               />
               <motion.div 
-                className="absolute top-1/4 -right-4 w-12 h-12 bg-pink-100 rounded-full -z-10"
+                className="absolute top-1/4 -right-4 w-12 h-12 bg-sky-100 rounded-full -z-10 opacity-80"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.8, 1, 0.8]
