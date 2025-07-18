@@ -10,6 +10,9 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [dailyStudyHours, setDailyStudyHours] = useState(2);
+  const [preferredStudyTime, setPreferredStudyTime] = useState('evening');
+  const [totalStudyGoalHours, setTotalStudyGoalHours] = useState(0);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
@@ -24,7 +27,16 @@ const SignUp = () => {
     try {
       const response = await axios.post(
         `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.REGISTER}`,
-        { name, email, password },
+        { 
+          name, 
+          email, 
+          password,
+          preferences: {
+            dailyStudyHours,
+            preferredStudyTime,
+            totalStudyGoalHours
+          }
+        },
         { withCredentials: true }
       );
       
@@ -103,6 +115,60 @@ const SignUp = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="dailyStudyHours" className="block text-sm font-medium text-gray-700">
+                  Daily Study Goal (hours)
+                </label>
+                <input
+                  id="dailyStudyHours"
+                  name="dailyStudyHours"
+                  type="number"
+                  min="1"
+                  max="24"
+                  required
+                  className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  value={dailyStudyHours}
+                  onChange={(e) => setDailyStudyHours(parseInt(e.target.value))}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="totalStudyGoalHours" className="block text-sm font-medium text-gray-700">
+                  Total Goal (hours)
+                </label>
+                <input
+                  id="totalStudyGoalHours"
+                  name="totalStudyGoalHours"
+                  type="number"
+                  min="0"
+                  step="1"
+                  className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  value={totalStudyGoalHours}
+                  onChange={(e) => setTotalStudyGoalHours(parseInt(e.target.value))}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="preferredStudyTime" className="block text-sm font-medium text-gray-700">
+                Preferred Study Time
+              </label>
+              <select
+                id="preferredStudyTime"
+                name="preferredStudyTime"
+                required
+                className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                value={preferredStudyTime}
+                onChange={(e) => setPreferredStudyTime(e.target.value)}
+              >
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+                <option value="night">Night</option>
+              </select>
             </div>
             
             <div>
